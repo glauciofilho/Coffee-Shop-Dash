@@ -5,11 +5,14 @@ import plotly.express as px
 app = Dash()
 
 df = pd.read_csv(r".\coffee_shop_revenue.csv")
+df_employees = df.groupby("Number_of_Employees")
 
-fig = px.bar(df, x="Number_of_Employees", y="Number_of_Customers_Per_Day", barmode="group")
+print(df_employees)
+
+fig = px.line(df, x="Number_of_Employees", y="Number_of_Customers_Per_Day")
 
 app.layout = html.Div(children=[
-    html.H1(children='Hello Dash'),
+    html.H1(children='Hello Dash', ),
 
     html.Div(children='''
         Dash: A web application framework for your data.
